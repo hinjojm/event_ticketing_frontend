@@ -1,0 +1,241 @@
+.container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f7f9; 
+    color: #333;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background-color: #fff; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .headerLeft {
+    display: flex;
+    align-items: center;
+  }
+  
+  .searchContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+  }
+  
+  .searchInput {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 280px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .searchInput:focus {
+    border-color: #007bff; 
+  }
+  
+  .searchIcon {
+    margin-left: -35px;
+    color: #888;
+    cursor: pointer;
+  }
+  
+  .nav {
+    display: flex;
+  }
+  
+  .nav button {
+    margin-left: 1rem;
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: #e6f0ff; 
+    color: #007bff; 
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .nav button:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .mainContent {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .sectionContainer {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+  
+  .card {
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background-color: #fff;
+    padding: 2rem;
+  }
+  
+  .categoryTitle {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  .categoryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  .categoryButton {
+    padding: 1.2rem 2.2rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    color: #007bff;
+    border: 1px solid #007bff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .categoryButton:hover {
+    background-color: #007bff;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .offers {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .offersTitle {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+  }
+  
+  .eventPosters {
+    display: flex;
+    overflow-x: auto;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .eventPoster {
+    min-width: 300px;
+    max-width: 350px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .eventPoster:hover {
+    transform: scale(1.05);
+  }
+  
+  .eventPoster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .info {
+    background-color: #fff;
+    padding: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .infoTitle {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+  }
+  
+  .infoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  .infoLink {
+    padding: 1rem 2rem;
+    border: 1px solid #007bff;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .infoLink:hover {
+    background-color: #007bff;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .infoContact {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 2rem;
+    line-height: 1.8;
+  }
+  
+  .footer {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: auto;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column; 
+  }
+  
+  .footer span {
+    margin-bottom: 1rem; 
+  }
+  
+  .footerIcons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .footerIcons img {
+    width: 30px;
+    height: 30px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+  
+  .footerIcons img:hover {
+    opacity: 1;
+  }

@@ -1,0 +1,42 @@
+.topNav {
+    background-color: #3498db;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 225px; 
+    width: calc(100vw - 225px); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  
+  .topNav h1 {
+    margin: 0;
+    font-size: 1.5em;
+    padding-left: 35px; 
+  }
+  
+  .topNav button {
+    padding: 10px 15px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+  }
+  
+  .topNav button svg {
+    margin-right: 8px;
+  }
+  
+  .topNav button:hover {
+    background-color: #c0392b;
+  }

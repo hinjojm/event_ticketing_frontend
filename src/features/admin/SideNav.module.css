@@ -1,0 +1,57 @@
+.sideNav {
+    width: 220px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px;
+    height: 100vh;
+    transition: width 0.3s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .open {
+    width: 220px;
+  }
+  
+  .closed {
+    width: 60px;
+  }
+  
+  .toggleButton {
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    cursor: pointer;
+    margin-bottom: 25px;
+    font-size: 1.2em;
+  }
+  
+  .sideNav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sideNav li button {
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+    border: none;
+    background: none;
+    color: #ecf0f1;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sideNav li button svg {
+    margin-right: 10px;
+  }
+  
+  .sideNav li button:hover {
+    background-color: #34495e;
+  }

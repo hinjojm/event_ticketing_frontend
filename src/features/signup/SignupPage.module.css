@@ -1,0 +1,95 @@
+.wrapper {
+  width: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #333;
+  border-radius: 12px;
+  padding: 40px;
+  margin: 50px auto;
+  box-sizing: border-box;
+}
+
+.wrapper h1 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #444;
+}
+
+.inputBox {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.inputBox input,
+.inputBox select {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.inputBox input:focus,
+.inputBox select:focus {
+  border-color: #007bff;
+}
+
+.inputBox input::placeholder {
+  color: #888;
+}
+
+.icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #888;
+}
+
+.errorMessage {
+  color: red;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.registerButton {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff; /* Blue button */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registerButton:hover {
+  background-color: #0056b3;
+}
+
+.registerLink {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.registerLink p a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.registerLink p a:hover {
+  text-decoration: underline;
+}

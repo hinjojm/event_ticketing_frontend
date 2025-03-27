@@ -1,0 +1,65 @@
+/* Header.module.css (or HomePage.module.css, if you're keeping it all in one file) */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem; /* Increased padding for better spacing */
+  background-color: #fff; /* Clean white background */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-bottom: 1px solid #eee; /* Light border at the bottom */
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem; /* Increased margin for better spacing */
+}
+
+.searchInput {
+  padding: 0.8rem 1rem; /* Increased padding for better visual */
+  border: 1px solid #ddd; /* Lighter border */
+  border-radius: 8px; /* More rounded corners */
+  width: 250px; /* Increased width for more input space */
+  font-size: 1rem;
+  transition: border-color 0.3s ease; /* Smooth transition on focus */
+}
+
+.searchInput:focus {
+  border-color: #007bff; /* Blue border on focus for visual cue */
+  outline: none; /* Remove default focus outline */
+}
+
+.searchIcon {
+  margin-left: -30px; /* Adjusted position */
+  color: #888;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+}
+
+.navButton {
+  margin-left: 1.5rem; /* Increased margin for better spacing */
+  padding: 1rem 2rem; /* Increased padding for larger buttons */
+  font-size: 1rem;
+  border-radius: 8px; /* More rounded corners */
+  background-color: #e6f0ff; /* Light blue background */
+  color: #007bff; /* Blue text */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.navButton:hover {
+  background-color: #007bff; /* Blue background on hover */
+  color: #fff; /* White text on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
