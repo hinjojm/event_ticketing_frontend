@@ -1,69 +1,77 @@
-import React from 'react';
-import { FaUser, FaLock } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import styles from './LoginPage.module.css';
-import Header from '../../components/Header'; 
-import { useState } from 'react';
-// Import Header
+import React, { useState } from "react";
+import { FaUser, FaLock } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import styles from "./LoginPage.module.css";
+import Header from "../../components/Header";
 
 const LoginPage = () => {
-
-  const [passord , setPassword ] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-   
+  const navigate = useNavigate(); // Use navigate for redirection
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
-  }
+  };
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
-  }
+  };
 
   console.log("email", email);
 
-  const formData = {
-    email: email,
-    password: password
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent page reload
+    console.log("Sending data...");
 
-  const handleSubmit = async (formData) => {
-    console.log("Sent data");
+    const formData = {
+      email: email,
+      password: password,
+    };
 
+    try {
       const response = await fetch("https://smartik/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json"},
-      body: JSON.stringify(formData)
-    })
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    const result = response.json();
+      const result = await response.json(); // Await the response properly
 
-    console.log(result);
+      console.log(result);
 
-    if(result.status === 200) {
-      Router.push("/dashboard")
-    } else if () {}
-
+      if (response.status === 200) {
+        navigate("/dashboard"); // Redirect on success
+      } else {
+        console.error("Login failed:", result);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
     }
+  };
 
-  }
   return (
     <div className={styles.container}>
       <Header /> {/* Add Header component */}
       <div className={styles.wrapper}>
-        <form action={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <h1>Login</h1>
           <div className={styles.inputBox}>
-            <input type="text" placeholder="Email" required onChange={handleEmail}/>
+            <input
+              type="text"
+              placeholder="Email"
+              required
+              onChange={handleEmail}
+            />
             <FaUser className={styles.icon} />
-          </div> 
+          </div>
 
           <div className={styles.inputBox}>
-            <input 
-            type="password"
-             placeholder="Password"
-             onChange={handlePassword}
-              required />
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={handlePassword}
+              required
+            />
             <FaLock className={styles.icon} />
           </div>
 
