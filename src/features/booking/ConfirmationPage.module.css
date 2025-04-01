@@ -1,0 +1,135 @@
+.pageContainer {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  .confirmationContainer {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .confirmationCard {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+  
+  .checkmark {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #48bb78;
+    color: white;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .confirmationCard h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+  }
+  
+  .eventSummary {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #f7fafc;
+    border-radius: 8px;
+  }
+  
+  .eventSummary h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #2d3748;
+  }
+  
+  .eventSummary p {
+    font-size: 1rem;
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+  }
+  
+  .ticketInfo {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+  }
+  
+  .ticketInfo h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #2d3748;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .primaryButton {
+    flex: 1;
+    padding: 1rem;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .secondaryButton {
+    flex: 1;
+    padding: 1rem;
+    background: white;
+    color: #4299e1;
+    border: 1px solid #4299e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .notFound {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .errorContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .errorContainer h2 {
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+  }
+  
+  .errorContainer button {
+    padding: 0.75rem 1.5rem;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .actions {
+      flex-direction: column;
+    }
+  }
