@@ -1,114 +1,189 @@
-.container {
-  font-family: sans-serif;
-  min-height: 100vh;
+/* Base Styles */
+.authContainer {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-.wrapper {
-    width: 400px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #333;
-    border-radius: 12px;
-    padding: 40px;
-    margin: 50px auto;
-    box-sizing: border-box; /* Ensures padding and border are included in width */
+.authFormContainer {
+  display: flex;
+  align-items: flex-start; /* Changed from center to prevent overflow */
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.authForm {
+  width: 100%;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin: 1rem 0;
+}
+
+/* Form Header */
+.formHeader {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.authForm h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #2d3748;
+}
+
+.authSubtitle {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+/* Form Elements */
+.formGroup {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.inputWithIcon {
+  position: relative;
+  width: 100%;
+}
+
+.inputWithIcon .inputIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a0aec0;
+  font-size: 0.9rem;
+}
+
+.inputWithIcon input,
+.formSelect {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  background-color: #f8fafc;
+}
+
+/* Form Row Layout */
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Password Fields */
+.passwordToggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #a0aec0;
+  cursor: pointer;
+}
+
+.passwordHint {
+  font-size: 0.75rem;
+  color: #718096;
+  margin-top: 0.25rem;
+}
+
+/* Button */
+.authButton {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 480px) {
+  .formRow {
+    flex-direction: row;
   }
   
-  .wrapper h1 {
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 30px;
-    color: #444;
+  .formRow .formGroup {
+    flex: 1;
+    min-width: 0; /* Prevents overflow */
+  }
+}
+
+@media (min-width: 768px) {
+  .authForm {
+    padding: 2rem;
   }
   
-  .inputBox {
-    position: relative;
-    margin-bottom: 25px;
+  .authForm h1 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+  .authContainer {
+    padding: 0.5rem;
   }
   
-  .inputBox input {
-    width: 100%;
-    padding: 12px 40px 12px 15px;
-    border: 1px solid #ccc; /* Faint grey border */
-    border-radius: 8px;
-    background-color: #f9f9f9; /* Faint grey background */
-    outline: none;
-    font-size: 16px;
-    color: #333;
-    transition: border-color 0.3s ease;
-    box-sizing: border-box; /* Ensures padding is included in width */
+  .authForm {
+    padding: 1.25rem;
   }
   
-  .inputBox input:focus {
-    border-color: #007bff;
+  .inputWithIcon input,
+  .formSelect {
+    padding: 0.65rem 0.65rem 0.65rem 2.25rem;
   }
-  
-  .inputBox input::placeholder {
-    color: #888;
-  }
-  
-  .icon {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    color: #888;
-  }
-  
-  .rememberForgot {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-  
-  .rememberForgot label input {
-    margin-right: 5px;
-  }
-  
-  .rememberForgot a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .rememberForgot a:hover {
-    text-decoration: underline;
-  }
-  
-  .wrapper button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .wrapper button:hover {
-    background-color: #0056b3;
-  }
-  
-  .registerLink {
-    font-size: 14px;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .registerLink p a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
-  .registerLink p a:hover {
-    text-decoration: underline;
-  }
+}
+
+.formOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.rememberMe input {
+  margin-right: 0.5rem;
+}
+
+.forgotPassword {
+  color: #6e8efb;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}

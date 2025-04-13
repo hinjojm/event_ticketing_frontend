@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Card, CardContent } from "../../features/ui";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "./HomePage.module.css";
 import Header from '../../components/Header';
+import { FaCalendarAlt, FaMapMarkerAlt, FaTicketAlt } from 'react-icons/fa';
 
 const categoryDetails = {
   "Musical Concert": { link: "/events/music" },
@@ -11,6 +12,94 @@ const categoryDetails = {
   "Sports Related": { link: "/events/sports" },
 };
 
+// Select 2 events from each category
+const featuredUpcomingEvents = [
+  // Music events (first 2 from MusicalEvents.jsx)
+  {
+    id: 1,
+    name: 'Gospel Night',
+    date: '2024-03-10',
+    time: '8:00 PM',
+    venue: 'Uhuru Garden',
+    category: 'Musical Concert',
+    image: '/assets/images/1.png',
+    price: 0,
+  },
+  {
+    id: 2,
+    name: 'Worship Night',
+    date: '2024-03-15',
+    time: '7:30 PM',
+    venue: 'KICC Roof top',
+    category: 'Musical Concert',
+    image: '/assets/images/2.png',
+    price: 2500,
+  },
+  // Comedy events (first 2 from ComedyEvents.jsx)
+  {
+    id: 1,
+    name: 'Stand-Up Night',
+    date: '2024-04-05',
+    time: '9:00 PM',
+    venue: 'Laugh Factory',
+    category: 'Comedy Event',
+    image: '/assets/images/comedy1.png',
+    price: 1500,
+  },
+  {
+    id: 2,
+    name: 'Improv Show',
+    date: '2024-04-12',
+    time: '8:30 PM',
+    venue: 'Comedy Club',
+    category: 'Comedy Event',
+    image: '/assets/images/comedy2.png',
+    price: 1000,
+  },
+  // Party events (first 2 from PartyEvents.jsx)
+  {
+    id: 1,
+    name: 'New Year Bash',
+    date: '2025-01-01',
+    time: '10:00 PM',
+    venue: 'City Club',
+    category: 'Party & Hangout',
+    image: '/assets/images/party1.jpg',
+    price: 3000,
+  },
+  {
+    id: 2,
+    name: "Valentine's Night",
+    date: '2025-02-14',
+    time: '8:00 PM',
+    venue: 'Love Lounge',
+    category: 'Party & Hangout',
+    image: '/assets/images/party2.jpg',
+    price: 2000,
+  },
+  // Sports events (first 2 from SportsEvents.jsx)
+  {
+    id: 1,
+    name: 'Local Football Match',
+    date: '2025-01-15',
+    time: '3:00 PM',
+    venue: 'City Stadium',
+    category: 'Sports Related',
+    image: '/assets/images/sports1.jpg',
+    price: 300,
+  },
+  {
+    id: 2,
+    name: 'Basketball Tournament',
+    date: '2025-02-20',
+    time: '5:00 PM',
+    venue: 'Indoor Arena',
+    category: 'Sports Related',
+    image: '/assets/images/sports2.jpg',
+    price: 800,
+  },
+];
+
 const HomePage = () => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -18,6 +107,20 @@ const HomePage = () => {
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
     navigate(categoryDetails[category].link);
+  };
+
+  const handleViewDetails = (event) => {
+    navigate(`/event/${event.id}/details`, { 
+      state: { 
+        event: {
+          ...event,
+          title: event.name,
+          location: event.venue,
+          imageUrl: event.image,
+          date: event.date
+        }
+      } 
+    });
   };
 
   return (
@@ -45,17 +148,26 @@ const HomePage = () => {
 
         <div className={styles.sectionContainer}>
           <div className={styles.offers}>
-            <h2 className={styles.offersTitle}>🎟️ Upcoming Events</h2>
-            <div className={styles.eventPosters}>
-              <div className={styles.eventPoster}>
-                <img src="/assets/images/event1.jpg" alt="Event 1" />
-              </div>
-              <div className={styles.eventPoster}>
-                <img src="/assets/images/event2.jpg" alt="Event 2" />
-              </div>
-              <div className={styles.eventPoster}>
-                <img src="/assets/images/event3.jpg" alt="Event 3" />
-              </div>
+            <h2 className={styles.offersTitle}>🔥 Upcoming Events</h2>
+            <div className={styles.featuredEventsGrid}>
+              {featuredUpcomingEvents.map(event => (
+                <div key={`${event.id}-${event.category}`} className={styles.featuredEventItem} onClick={() => handleViewDetails(event)}>
+                  <img src={event.image} alt={event.name} className={styles.featuredEventImage} />
+                  <div className={styles.featuredEventDetails}>
+                    <h3 className={styles.featuredEventName}>{event.name}</h3>
+                    <p className={styles.featuredEventMeta}>
+                      <FaCalendarAlt className={styles.metaIcon} /> {event.date} • {event.time}
+                    </p>
+                    <p className={styles.featuredEventMeta}>
+                      <FaMapMarkerAlt className={styles.metaIcon} /> {event.venue}
+                    </p>
+                    <p className={styles.featuredEventMeta}>
+                      <FaTicketAlt className={styles.metaIcon} /> {event.price === 0 ? 'FREE' : `KES ${event.price}`}
+                    </p>
+                    <p className={styles.featuredEventCategory}>{event.category}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

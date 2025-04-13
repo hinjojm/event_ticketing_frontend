@@ -1,93 +1,125 @@
-import React, { useState } from "react";
-import { FaUser, FaLock } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import styles from "./LoginPage.module.css";
-import Header from "../../components/Header";
+import React, { useState } from 'react';
+import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import styles from './LoginPage.module.css';
+import Header from '../../components/Header';
 
 const LoginPage = () => {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const navigate = useNavigate(); // Use navigate for redirection
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  console.log("email", email);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent page reload
-    console.log("Sending data...");
-
-    const formData = {
-      email: email,
-      password: password,
-    };
-
+    e.preventDefault();
+    setIsLoading(true);
+    
     try {
-      const response = await fetch("https://smartik/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json(); // Await the response properly
-
-      console.log(result);
-
-      if (response.status === 200) {
-        navigate("/dashboard"); // Redirect on success
-      } else {
-        console.error("Login failed:", result);
-      }
+      // API call would go here
+      setTimeout(() => {
+        setIsLoading(false);
+        // Redirect to dashboard on success
+      }, 1500);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      setErrorMessage(error.message || 'Login failed. Please try again.');
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className={styles.container}>
-      <Header /> {/* Add Header component */}
-      <div className={styles.wrapper}>
-        <form onSubmit={handleSubmit}>
-          <h1>Login</h1>
-          <div className={styles.inputBox}>
-            <input
-              type="text"
-              placeholder="Email"
-              required
-              onChange={handleEmail}
-            />
-            <FaUser className={styles.icon} />
+    <div className={styles.authContainer}>
+      <Header />
+      <div className={styles.authFormContainer}>
+        <form onSubmit={handleSubmit} className={styles.authForm}>
+          <div className={styles.formHeader}>
+            <h1>Welcome Back</h1>
+            <p className={styles.authSubtitle}>Sign in to your account</p>
           </div>
 
-          <div className={styles.inputBox}>
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={handlePassword}
-              required
-            />
-            <FaLock className={styles.icon} />
+          <div className={styles.formGroup}>
+            <label>Email Address</label>
+            <div className={styles.inputWithIcon}>
+              <FaUser className={styles.inputIcon} />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="johndoe@example.com"
+                required
+              />
+            </div>
           </div>
 
-          <div className={styles.rememberForgot}>
-            <label>
+          <div className={styles.formGroup}>
+            <label>Password</label>
+            <div className={styles.inputWithIcon}>
+              <FaLock className={styles.inputIcon} />
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter your password"
+                required
+                minLength="7"
+              />
+              <button
+                type="button"
+                className={styles.passwordToggle}
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
+          </div>
+
+          <div className={styles.formOptions}>
+            <label className={styles.rememberMe}>
               <input type="checkbox" />
-              Remember me
+              <span>Remember me</span>
             </label>
-            <a href="#">Forgot password?</a>
+            <Link to="/forgot-password" className={styles.forgotPassword}>
+              Forgot password?
+            </Link>
           </div>
 
-          <button type="submit">Login</button>
+          {errorMessage && (
+            <div className={styles.errorMessage}>
+              {errorMessage}
+            </div>
+          )}
 
-          <div className={styles.registerLink}>
+          <button
+            type="submit"
+            className={styles.authButton}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <span className={styles.spinner}></span>
+            ) : (
+              'Sign In'
+            )}
+          </button>
+
+          <div className={styles.authFooter}>
             <p>
-              Don't have an account? <Link to="/signup">Register</Link>
+              Don't have an account?{' '}
+              <Link to="/signup" className={styles.authLink}>
+                Sign up
+              </Link>
             </p>
           </div>
         </form>
