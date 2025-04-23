@@ -47,7 +47,7 @@ const LoginPage = () => {
 
       setIsLoading(false);
       alert('Login successful!');
-      navigate('/dashboard'); // Change to your actual dashboard route
+      navigate('/dashboard'); // Change to the actual dashboard route
     } catch (error) {
       setErrorMessage(error.message || 'Login failed. Please try again.');
       setIsLoading(false);
