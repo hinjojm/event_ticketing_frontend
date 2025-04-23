@@ -1,0 +1,241 @@
+.profileContainer {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .profileTabs {
+    display: flex;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 2rem;
+  }
+  
+  .tabButton {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-size: 1rem;
+    color: #4a5568;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .tabButton.active {
+    color: #4a6bff;
+    border-bottom-color: #4a6bff;
+    font-weight: 500;
+  }
+  
+  .profileHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .profileHeader h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #2d3748;
+  }
+  
+  .editButton {
+    padding: 0.5rem 1rem;
+    background-color: #4a6bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .editButton:hover {
+    background-color: #3a5bef;
+  }
+  
+  .editActions {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .cancelButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #edf2f7;
+    border: none;
+    border-radius: 6px;
+    color: #4a5568;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .cancelButton:hover {
+    background-color: #e2e8f0;
+  }
+  
+  .saveButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #48bb78;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .saveButton:hover {
+    background-color: #38a169;
+  }
+  
+  .profileContent {
+    display: flex;
+    gap: 3rem;
+  }
+  
+  .profilePicture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #f5f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .defaultAvatar {
+    font-size: 4rem;
+    color: #a0aec0;
+  }
+  
+  .uploadButton label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #edf2f7;
+    color: #4a5568;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 0.9rem;
+  }
+  
+  .uploadButton label:hover {
+    background-color: #e2e8f0;
+  }
+  
+  .profileDetails {
+    flex: 1;
+  }
+  
+  .formGroup {
+    margin-bottom: 1.5rem;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #4a5568;
+  }
+  
+  .formGroup p {
+    margin: 0;
+    padding: 0.5rem 0;
+    color: #2d3748;
+  }
+  
+  .formGroup input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  
+  .formGroup input:focus {
+    outline: none;
+    border-color: #4a6bff;
+    box-shadow: 0 0 0 2px rgba(74, 107, 255, 0.2);
+  }
+  
+  .passwordSection {
+    padding: 1rem 0;
+  }
+  
+  .passwordNote {
+    color: #718096;
+    margin-bottom: 2rem;
+  }
+  
+  .passwordForm {
+    max-width: 500px;
+  }
+  
+  .passwordInput {
+    position: relative;
+  }
+  
+  .passwordInput input {
+    padding-right: 40px;
+  }
+  
+  .togglePassword {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #718096;
+    cursor: pointer;
+  }
+  
+  .passwordHint {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 0.25rem;
+  }
+  
+  @media (max-width: 768px) {
+    .profileContent {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .profilePicture {
+      align-self: center;
+    }
+    
+    .profileTabs {
+      justify-content: center;
+    }
+  }

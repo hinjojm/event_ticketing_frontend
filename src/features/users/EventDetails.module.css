@@ -1,0 +1,269 @@
+.eventDetails {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .backButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: #4a6bff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+  }
+  
+  .backButton:hover {
+    background-color: #f0f4ff;
+  }
+  
+  .eventHeader {
+    margin-bottom: 2rem;
+  }
+  
+  .eventHeader h1 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  
+  .eventImageContainer {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .eventImage {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  
+  .eventBadge {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .eventInfo {
+    margin-bottom: 3rem;
+  }
+  
+  .infoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .infoItem {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background-color: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .infoIcon {
+    font-size: 1.5rem;
+    color: #4a6bff;
+    margin-top: 0.25rem;
+  }
+  
+  .infoItem h3 {
+    margin: 0 0 0.5rem;
+    color: #4a5568;
+    font-size: 1rem;
+  }
+  
+  .infoItem p {
+    margin: 0;
+    color: #2d3748;
+    font-size: 1.1rem;
+  }
+  
+  .description {
+    margin-bottom: 2rem;
+  }
+  
+  .description h2 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .description p {
+    color: #4a5568;
+    line-height: 1.6;
+  }
+  
+  .organizer {
+    background-color: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .organizer h3 {
+    margin: 0 0 0.5rem;
+    color: #4a5568;
+    font-size: 1rem;
+  }
+  
+  .organizer p {
+    margin: 0;
+    color: #2d3748;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  .ticketOptions h2 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .ticketGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .ticketType {
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .ticketType:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ticketHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .ticketHeader h3 {
+    margin: 0;
+    color: #2d3748;
+    font-size: 1.25rem;
+  }
+  
+  .ticketPrice {
+    margin: 0;
+    color: #4a6bff;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .ticketBenefits {
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+  
+  .ticketBenefits h4 {
+    margin: 0 0 0.5rem;
+    color: #4a5568;
+    font-size: 0.9rem;
+  }
+  
+  .ticketBenefits ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .ticketBenefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+    font-size: 0.9rem;
+  }
+  
+  .benefitIcon {
+    color: #4a6bff;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+  }
+  
+  .bookButton {
+    background-color: #4a6bff;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+  }
+  
+  .bookButton:hover {
+    background-color: #3a5bef;
+  }
+  
+  .loading, .error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    font-size: 1.2rem;
+    color: #4a5568;
+  }
+  
+  .error {
+    color: #e53e3e;
+  }
+  
+  @media (max-width: 768px) {
+    .eventDetails {
+      padding: 1.5rem;
+    }
+    
+    .eventHeader h1 {
+      font-size: 1.5rem;
+    }
+    
+    .eventImage {
+      height: 300px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .eventDetails {
+      padding: 1rem;
+    }
+    
+    .ticketGrid {
+      grid-template-columns: 1fr;
+    }
+  }
