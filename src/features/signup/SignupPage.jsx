@@ -11,11 +11,10 @@ const SignupPage = () => {
     lastName: '',
     phone: '',
     email: '',
-    password: '',
-    confirmPassword: ''
+    password: ''
   });
+
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,27 +35,52 @@ const SignupPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    if (formData.password !== formData.confirmPassword) {
-      setErrorMessage('Passwords do not match.');
-      setIsLoading(false);
-      return;
-    }
-    
+
     if (!validatePassword(formData.password)) {
       setErrorMessage('Password must be at least 7 characters with both letters and numbers.');
       setIsLoading(false);
       return;
     }
-    
+
+    // Convert frontend fields to backend-compatible names
+    const requestBody = {
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      email_address: formData.email,
+      password: formData.password,
+      phone_number: formData.phone,
+      role_id: formData.role === "Event Organizer" ? 1 : 2
+    };
+
     try {
-      // API call would go here
-      setTimeout(() => {
-        setIsLoading(false);
-        alert('Registration Successful!');
-      }, 1500);
+      const response = await fetch('https://9800-41-90-101-26.ngrok-free.app/api/v1/users/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Registration failed.');
+      }
+
+      alert('Registration successful!');
+      setErrorMessage('');
+      setFormData({
+        role: '',
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        password: ''
+      });
     } catch (error) {
-      setErrorMessage(error.message || 'Registration failed. Please try again.');
+      console.error("Registration error:", error);
+      setErrorMessage(error.message || 'Something went wrong. Please try again.');
+    } finally {
       setIsLoading(false);
     }
   };
@@ -98,12 +122,12 @@ const SignupPage = () => {
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                      placeholder="John"
+                      placeholder=""
                       required
                     />
                   </div>
                 </div>
-                
+
                 <div className={styles.formGroup}>
                   <label>Last Name</label>
                   <div className={styles.inputWithIcon}>
@@ -113,7 +137,7 @@ const SignupPage = () => {
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
-                      placeholder="Doe"
+                      placeholder=""
                       required
                     />
                   </div>
@@ -129,7 +153,7 @@ const SignupPage = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="0712345678"
+                    placeholder=""
                     required
                     pattern="\d{10,13}"
                     title="Phone number must be 10-13 digits"
@@ -146,7 +170,7 @@ const SignupPage = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="johndoe@example.com"
+                    placeholder=""
                     required
                   />
                 </div>
@@ -161,7 +185,7 @@ const SignupPage = () => {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    placeholder="Create password"
+                    placeholder=""
                     required
                     minLength="7"
                   />
@@ -177,30 +201,6 @@ const SignupPage = () => {
                 <p className={styles.passwordHint}>
                   At least 7 characters with letters and numbers
                 </p>
-              </div>
-
-              <div className={styles.formGroup}>
-                <label>Confirm Password</label>
-                <div className={styles.inputWithIcon}>
-                  <FaLock className={styles.inputIcon} />
-                  <input
-                    type={showConfirmPassword ? "text" : "password"}
-                    name="confirmPassword"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    placeholder="Confirm password"
-                    required
-                    minLength="7"
-                  />
-                  <button
-                    type="button"
-                    className={styles.passwordToggle}
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    aria-label={showConfirmPassword ? "Hide password" : "Show password"}
-                  >
-                    {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-                  </button>
-                </div>
               </div>
             </>
           )}

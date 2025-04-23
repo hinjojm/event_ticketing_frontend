@@ -10,7 +10,7 @@
 
 .authFormContainer {
   display: flex;
-  align-items: flex-start; /* Changed from center to prevent overflow */
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
   max-width: 500px;
@@ -127,10 +127,10 @@
   .formRow {
     flex-direction: row;
   }
-  
+
   .formRow .formGroup {
     flex: 1;
-    min-width: 0; /* Prevents overflow */
+    min-width: 0;
   }
 }
 
@@ -138,7 +138,7 @@
   .authForm {
     padding: 2rem;
   }
-  
+
   .authForm h1 {
     font-size: 1.75rem;
   }
@@ -149,11 +149,11 @@
   .authContainer {
     padding: 0.5rem;
   }
-  
+
   .authForm {
     padding: 1.25rem;
   }
-  
+
   .inputWithIcon input,
   .formSelect {
     padding: 0.65rem 0.65rem 0.65rem 2.25rem;

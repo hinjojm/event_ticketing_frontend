@@ -9,7 +9,7 @@ const PaymentHistory = () => {
   const payments = [
     {
       id: 'PAY-001',
-      eventId: 'jazz-fest-2023', // Add eventId for navigation
+      eventId: 'jazz-fest-2023', // Add of the eventId for navigation
       date: '2025-03-15',
       amount: 5000,
       event: 'Nairobi Jazz Festival',
@@ -19,7 +19,7 @@ const PaymentHistory = () => {
     },
     {
       id: 'PAY-002',
-      eventId: 'comedy-night-2025', // Add eventId for navigation
+      eventId: 'comedy-night-2025', // Add of the eventId for navigation
       date: '2025-03-10',
       amount: 1000,
       event: 'Comedy Night',
@@ -37,7 +37,7 @@ const PaymentHistory = () => {
     },
     {
       id: 'PAY-003',
-      eventId: 'sports-event-2025', // Add eventId for navigation
+      eventId: 'sports-event-2025', // Add of the eventId for navigation
       date: '2025-04-01',
       amount: 500,
       event: 'Football Match',
@@ -55,7 +55,7 @@ const PaymentHistory = () => {
     },
     {
       id: 'PAY-004',
-      eventId: 'music-concert-2024', // Add eventId for navigation
+      eventId: 'music-concert-2024', // Add of the eventId for navigation
       date: '2024-12-20',
       amount: 3000,
       event: 'Summer Music Concert',
@@ -65,7 +65,7 @@ const PaymentHistory = () => {
     },
     {
       id: 'PAY-005',
-      eventId: 'stand-up-comedy-2024', // Add eventId for navigation
+      eventId: 'stand-up-comedy-2024', // Add of the eventId for navigation
       date: '2024-11-05',
       amount: 750,
       event: 'Stand-Up Comedy Show',
@@ -82,7 +82,7 @@ const PaymentHistory = () => {
     },
     {
       id: 'PAY-006',
-      eventId: 'marathon-2025', // Add eventId for navigation
+      eventId: 'marathon-2025', // Add of the eventId for navigation
       date: '2025-01-10',
       amount: 2500,
       event: 'City Marathon',
@@ -93,7 +93,7 @@ const PaymentHistory = () => {
     },
     {
       id: 'PAY-007',
-      eventId: 'another-concert-2025', // Add eventId for navigation
+      eventId: 'another-concert-2025', // Add of the eventId for navigation
       date: '2025-02-15',
       amount: 600,
       event: 'Another Music Event',
@@ -111,7 +111,7 @@ const PaymentHistory = () => {
     },
     {
       id: 'PAY-008',
-      eventId: 'boxing-match-2024', // Add eventId for navigation
+      eventId: 'boxing-match-2024', // Add of the eventId for navigation
       date: '2024-10-01',
       amount: 4000,
       event: 'Boxing Championship',
@@ -121,7 +121,7 @@ const PaymentHistory = () => {
     },
     {
       id: 'PAY-009',
-      eventId: 'art-exhibition-2025', // Add eventId for navigation
+      eventId: 'art-exhibition-2025', // Add of the eventId for navigation
       date: '2025-03-25',
       amount: 300,
       event: 'Local Art Exhibition',

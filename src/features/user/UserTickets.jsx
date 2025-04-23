@@ -17,7 +17,7 @@ const UserTickets = () => {
         date: '2025-12-15',
         time: '18:00',
         venue: 'KICC Nairobi',
-        ticketType: 'VIP',
+        ticketType: 'VIP', // Could be 'VIP', 'Regular', 'VVIP'
         price: 5000,
         status: 'confirmed', // Could be 'confirmed', 'pending', 'cancelled', 'past'
         paymentStatus: 'paid', // 'paid', 'partial', 'unpaid'

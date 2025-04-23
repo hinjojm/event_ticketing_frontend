@@ -55,7 +55,7 @@ const AdminDashboardOverview = () => {
     }
   ];
 
-  // Chart data
+  // Chart data (installation of js. chart)
   const chartData = {
     labels: events.map(event => event.name),
     datasets: [
@@ -169,4 +169,4 @@ const AdminDashboardOverview = () => {
   );
 };
 
-export default AdminDashboardOverview;
+export default AdminDashboardOverview; 

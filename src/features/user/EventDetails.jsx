@@ -3,7 +3,7 @@ import { useParams, useNavigate, useLocation, Link } from 'react-router-dom';
 import { FaCalendarAlt, FaMapMarkerAlt, FaTicketAlt, FaArrowLeft, FaUsers, FaInfoCircle } from 'react-icons/fa';
 import styles from './EventDetails.module.css';
 
-// Mock data (adjust as needed)
+// Mock data (adjust needed with successive ngrok  )
 const mockEvents = {
   'jazz-fest-2023': { id: 'jazz-fest-2023', name: 'Nairobi Jazz Festival', date: '2025-12-15', time: '18:00', venue: 'KICC Nairobi', description: 'An amazing jazz festival you don\'t want to miss!', image: 'https://via.placeholder.com/150', ticketTypes: [{ type: 'VIP', price: 5000 }, { type: 'Regular', price: 3000 }] },
   'rhumba-night-2024': { id: 'rhumba-night-2024', name: 'Rhumba Night', date: '2024-11-20', time: '20:00', venue: 'Carnivore Grounds', description: 'A night of classic rhumba music.', image: 'https://via.placeholder.com/150/0000FF', ticketTypes: [{ type: 'Regular', price: 3000 }] },
@@ -79,7 +79,7 @@ const EventDetails = () => {
       <div className={styles.ticketOptions}>
         <h2>Event Ticket Options</h2>
         {fromDashboard && userTicket ? (
-          // Render UI for when navigated from the user dashboard
+          // Render UI during the navigation from the user dashboard
           <div>
             <p><strong>Ticket Status:</strong> {userTicket.status}</p>
             {userTicket.paymentStatus && <p><strong>Payment Status:</strong> {userTicket.paymentStatus}</p>}
@@ -95,10 +95,10 @@ const EventDetails = () => {
             {userTicket.status === 'cancelled' && (
               <p>This ticket has been cancelled.</p>
             )}
-            {/* You can add more conditional rendering based on the ticket status */}
+            {/* Additional of more conditional rendering based on the ticket status */}
           </div>
         ) : (
-          // Render the regular booking options for category pages
+          // Render of the regular booking options form category pages
           event.ticketTypes && event.ticketTypes.map(ticket => (
             <div key={ticket.type} className={styles.ticketType}>
               <div>

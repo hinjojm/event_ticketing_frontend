@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 import Header from '../../components/Header';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
-    email: '',
+    email_address: '',
     password: ''
   });
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate(); // to redirect on success
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,13 +25,29 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
+    setErrorMessage('');
+
     try {
-      // API call would go here
-      setTimeout(() => {
-        setIsLoading(false);
-        // Redirect to dashboard on success
-      }, 1500);
+      const response = await fetch(' https://9800-41-90-101-26.ngrok-free.app/api/v1/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Login failed. Please try again.');
+      }
+
+      // Optional: Save token or user data to localStorage/sessionStorage
+      // localStorage.setItem('token', data.token);
+
+      setIsLoading(false);
+      alert('Login successful!');
+      navigate('/dashboard'); // Change to your actual dashboard route
     } catch (error) {
       setErrorMessage(error.message || 'Login failed. Please try again.');
       setIsLoading(false);
@@ -52,11 +69,11 @@ const LoginPage = () => {
             <div className={styles.inputWithIcon}>
               <FaUser className={styles.inputIcon} />
               <input
-                type="email"
-                name="email"
+                type="email_address"
+                name="email_address"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="johndoe@example.com"
+                placeholder=""
                 required
               />
             </div>
@@ -71,7 +88,7 @@ const LoginPage = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Enter your password"
+                placeholder=""
                 required
                 minLength="7"
               />

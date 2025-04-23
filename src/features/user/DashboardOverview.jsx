@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import styles from './DashboardOverview.module.css';
 
 const DashboardOverview = () => {
-  // Mock user's upcoming events data (replace with your actual data fetching)
+  // Mock user's upcoming events data (replacement with actual data fetched from backend ngrok connection)
   const upcomingEvents = [
     {
       id: 'jazz-fest-2023',
@@ -39,10 +39,10 @@ const DashboardOverview = () => {
       userTicketId: 'USER-TICKET-003',
       bookingId: 'BOOK-003',
     },
-    // Add more upcoming events here
+    // Add of more upcoming events here
   ];
 
-  // Mock dashboard stats (replace with your actual data)
+  // Mock dashboard stats (to be replace with actual data)
   const stats = [
     {
       title: 'Upcoming Events',
@@ -70,7 +70,7 @@ const DashboardOverview = () => {
     },
     {
       title: 'Past Events',
-      value: 3, // Replace with actual count of past events
+      value: 3, // Replacement with actual count of past events
       icon: <FaHistory className={styles.historyIcon} />,
       color: '#ed8936',
       trend: 'up',
@@ -83,7 +83,7 @@ const DashboardOverview = () => {
       <div className={styles.header}>
         <h2>Dashboard Overview</h2>
         <div className={styles.notificationBadge}>
-          <FaBell /> <span>3</span> {/* Replace with actual notification count */}
+          <FaBell /> <span>3</span> {/* Replacement with actual notification count */}
         </div>
       </div>
 
