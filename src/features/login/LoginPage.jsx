@@ -12,11 +12,11 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate(); // to redirect on success
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value
     }));
@@ -28,7 +28,7 @@ const LoginPage = () => {
     setErrorMessage('');
 
     try {
-      const response = await fetch(' https://9800-41-90-101-26.ngrok-free.app/api/v1/users/login', {
+      const response = await fetch('https://434f-41-90-101-26.ngrok-free.app/api/v1/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -42,14 +42,16 @@ const LoginPage = () => {
         throw new Error(data.message || 'Login failed. Please try again.');
       }
 
-      // Optional: Save token or user data to localStorage/sessionStorage
-      // localStorage.setItem('token', data.token);
+      // Save token and user to local storage
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
 
-      setIsLoading(false);
       alert('Login successful!');
-      navigate('/dashboard'); // Change to the actual dashboard route
+      navigate('/user'); // Redirect to user dashboard
+
     } catch (error) {
       setErrorMessage(error.message || 'Login failed. Please try again.');
+    } finally {
       setIsLoading(false);
     }
   };
@@ -64,31 +66,33 @@ const LoginPage = () => {
             <p className={styles.authSubtitle}>Sign in to your account</p>
           </div>
 
+          {/* Email */}
           <div className={styles.formGroup}>
             <label>Email Address</label>
             <div className={styles.inputWithIcon}>
               <FaUser className={styles.inputIcon} />
               <input
-                type="email_address"
+                type="email"
                 name="email_address"
-                value={formData.email}
+                value={formData.email_address}
                 onChange={handleChange}
-                placeholder=""
+                placeholder="Enter your email"
                 required
               />
             </div>
           </div>
 
+          {/* Password */}
           <div className={styles.formGroup}>
             <label>Password</label>
             <div className={styles.inputWithIcon}>
               <FaLock className={styles.inputIcon} />
               <input
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder=""
+                placeholder="Enter your password"
                 required
                 minLength="7"
               />
@@ -96,13 +100,14 @@ const LoginPage = () => {
                 type="button"
                 className={styles.passwordToggle}
                 onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? "Hide password" : "Show password"}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
 
+          {/* Options */}
           <div className={styles.formOptions}>
             <label className={styles.rememberMe}>
               <input type="checkbox" />
@@ -113,24 +118,21 @@ const LoginPage = () => {
             </Link>
           </div>
 
+          {/* Error Message */}
           {errorMessage && (
-            <div className={styles.errorMessage}>
-              {errorMessage}
-            </div>
+            <div className={styles.errorMessage}>{errorMessage}</div>
           )}
 
+          {/* Submit Button */}
           <button
             type="submit"
             className={styles.authButton}
             disabled={isLoading}
           >
-            {isLoading ? (
-              <span className={styles.spinner}></span>
-            ) : (
-              'Sign In'
-            )}
+            {isLoading ? <span className={styles.spinner}></span> : 'Sign In'}
           </button>
 
+          {/* Footer */}
           <div className={styles.authFooter}>
             <p>
               Don't have an account?{' '}
