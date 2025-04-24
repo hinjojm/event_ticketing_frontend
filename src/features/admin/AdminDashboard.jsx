@@ -15,6 +15,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const sampleEvents = [
       {
+        //dummy data, was to be pulled from backnend
         id: 1,
         name: 'Nairobi Jazz Festival',
         type: 'Musical Concert',

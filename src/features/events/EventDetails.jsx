@@ -91,6 +91,7 @@ const EventDetails = () => {
             </div>
 
             {fromDashboard && userTicket ? (
+              
               // Display user ticket information
               <div className={styles.userTicketInfo}>
                 <h3>Your Ticket Information</h3>
