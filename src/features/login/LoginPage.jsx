@@ -147,6 +147,6 @@ const LoginPage = () => {
       </div>
     </div>
   );
-};git 
+};
 
 export default LoginPage;
