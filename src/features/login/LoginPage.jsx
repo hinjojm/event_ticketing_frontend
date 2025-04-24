@@ -42,12 +42,20 @@ const LoginPage = () => {
         throw new Error(data.message || 'Login failed. Please try again.');
       }
 
-      // Save token and user to local storage
+      // Save to localStorage
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
+      localStorage.setItem('role', data.role_name);
+      localStorage.setItem('email', data.emailAddress);
 
       alert('Login successful!');
-      navigate('/user'); // Redirect to user dashboard
+
+      // Redirect based on role
+      if (data.role_name === 'ADMIN') {
+        navigate('/admin');
+      } else {
+        navigate('/user');
+      }
 
     } catch (error) {
       setErrorMessage(error.message || 'Login failed. Please try again.');
@@ -66,7 +74,6 @@ const LoginPage = () => {
             <p className={styles.authSubtitle}>Sign in to your account</p>
           </div>
 
-          {/* Email */}
           <div className={styles.formGroup}>
             <label>Email Address</label>
             <div className={styles.inputWithIcon}>
@@ -82,7 +89,6 @@ const LoginPage = () => {
             </div>
           </div>
 
-          {/* Password */}
           <div className={styles.formGroup}>
             <label>Password</label>
             <div className={styles.inputWithIcon}>
@@ -107,7 +113,6 @@ const LoginPage = () => {
             </div>
           </div>
 
-          {/* Options */}
           <div className={styles.formOptions}>
             <label className={styles.rememberMe}>
               <input type="checkbox" />
@@ -118,12 +123,10 @@ const LoginPage = () => {
             </Link>
           </div>
 
-          {/* Error Message */}
           {errorMessage && (
             <div className={styles.errorMessage}>{errorMessage}</div>
           )}
 
-          {/* Submit Button */}
           <button
             type="submit"
             className={styles.authButton}
@@ -132,7 +135,6 @@ const LoginPage = () => {
             {isLoading ? <span className={styles.spinner}></span> : 'Sign In'}
           </button>
 
-          {/* Footer */}
           <div className={styles.authFooter}>
             <p>
               Don't have an account?{' '}
@@ -145,6 +147,6 @@ const LoginPage = () => {
       </div>
     </div>
   );
-};
+};git 
 
 export default LoginPage;

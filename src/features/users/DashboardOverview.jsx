@@ -1,4 +1,3 @@
-// src/features/dashboard/DashboardOverview.jsx
 import React from "react";
 import {
   FaTicketAlt,
@@ -11,7 +10,7 @@ import { Link } from "react-router-dom";
 import styles from "./DashboardOverview.module.css";
 
 const DashboardOverview = () => {
-  // Mock user's upcoming events data (replacement with actual data fetched from backend ngrok connection)
+  // Mock user's upcoming events data (to be replaced with actual data fetched from backend)
   const upcomingEvents = [
     {
       id: "jazz-fest-2023",
@@ -29,7 +28,7 @@ const DashboardOverview = () => {
       bookingId: "BOOK-001",
     },
     {
-      id: "rhumba-night-2024", // Using the ID of a known mock event
+      id: "rhumba-night-2024",
       name: "Rhumba Night",
       date: "2024-11-20",
       venue: "Carnivore Grounds",
@@ -45,10 +44,10 @@ const DashboardOverview = () => {
       userTicketId: "USER-TICKET-003",
       bookingId: "BOOK-003",
     },
-    // Add of more upcoming events here
+    // Add more upcoming events here as needed
   ];
 
-  // Mock dashboard stats (to be replace with actual data)
+  // Mock dashboard stats (to be replaced with actual data)
   const stats = [
     {
       title: "Upcoming Events",
@@ -76,7 +75,7 @@ const DashboardOverview = () => {
     },
     {
       title: "Past Events",
-      value: 3, // Replacement with actual count of past events
+      value: 3, // Placeholder for actual count of past events
       icon: <FaHistory className={styles.historyIcon} />,
       color: "#ed8936",
       trend: "up",
@@ -89,8 +88,7 @@ const DashboardOverview = () => {
       <div className={styles.header}>
         <h2>Dashboard Overview</h2>
         <div className={styles.notificationBadge}>
-          <FaBell /> <span>3</span>{" "}
-          {/* Replacement with actual notification count */}
+          <FaBell /> <span>3</span> {/* Replace with actual notification count */}
         </div>
       </div>
 
@@ -139,14 +137,14 @@ const DashboardOverview = () => {
                     <div
                       className={styles.progressFill}
                       style={{
-                        width: `${
-                          (event.payment.paid / event.payment.amount) * 100
-                        }%`,
+                        width: `${(event.payment.paid / event.payment.amount) * 100}%`,
                       }}
                     ></div>
                   </div>
                   <div className={styles.paymentDetails}>
-                    <span>Paid: KSh {event.payment.paid.toLocaleString()}</span>
+                    <span>
+                      Paid: KSh {event.payment.paid.toLocaleString()}
+                    </span>
                     <span>Next Payment: {event.payment.nextPayment}</span>
                   </div>
                 </div>
@@ -171,8 +169,7 @@ const DashboardOverview = () => {
                       date: event.date,
                     },
                     paymentOption: "installment",
-                    installmentAmount:
-                      event.payment.amount / event.payment.installments,
+                    installmentAmount: event.payment.amount / event.payment.installments,
                     remainingAmount: event.payment.amount - event.payment.paid,
                   }}
                   className={styles.payButton}
@@ -189,7 +186,7 @@ const DashboardOverview = () => {
       <div className={styles.quickActions}>
         <h3>Quick Actions</h3>
         <div className={styles.actionsGrid}>
-          <Link to="/events" className={styles.actionCard}>
+          <Link to="/" className={styles.actionCard}>
             <FaTicketAlt /> Buy Tickets
           </Link>
           <Link to="/user/tickets" className={styles.actionCard}>
