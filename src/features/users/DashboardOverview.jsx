@@ -1,204 +1,103 @@
-import React from "react";
-import {
-  FaTicketAlt,
-  FaCalendarAlt,
-  FaMoneyBillWave,
-  FaHistory,
-  FaBell,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
-import styles from "./DashboardOverview.module.css";
+import React, { useState, useEffect } from 'react'; 
+import { Outlet, useNavigate } from 'react-router-dom';
+import styles from './AdminDashboard.module.css';
+import Calendar from './events/Calendar/Calendar';
+import SideNav from './SideNav';
+import TopNav from './TopNav';
 
-const DashboardOverview = () => {
-  // Mock user's upcoming events data (to be replaced with actual data fetched from backend)
-  const upcomingEvents = [
-    {
-      id: "jazz-fest-2023",
-      name: "Nairobi Jazz Festival",
-      date: "2025-12-15",
-      venue: "KICC Nairobi",
-      ticketType: "VIP",
-      status: "confirmed",
-      payment: {
-        type: "full",
-        amount: 5000,
-        paid: 5000,
-      },
-      userTicketId: "USER-TICKET-001",
-      bookingId: "BOOK-001",
-    },
-    {
-      id: "rhumba-night-2024",
-      name: "Rhumba Night",
-      date: "2024-11-20",
-      venue: "Carnivore Grounds",
-      ticketType: "Regular",
-      status: "confirmed",
-      payment: {
-        type: "installment",
-        amount: 3000,
-        paid: 1500, // Partially paid
-        nextPayment: "2024-11-10",
-        installments: 2,
-      },
-      userTicketId: "USER-TICKET-003",
-      bookingId: "BOOK-003",
-    },
-    // Add more upcoming events here as needed
-  ];
+const AdminDashboard = () => {
+  const [isSideNavOpen, setIsSideNavOpen] = useState(true);
+  const [events, setEvents] = useState([]);
+  const [filter, setFilter] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
-  // Mock dashboard stats (to be replaced with actual data)
-  const stats = [
-    {
-      title: "Upcoming Events",
-      value: upcomingEvents.length,
-      icon: <FaCalendarAlt className={styles.calendarIcon} />,
-      color: "#6e8efb",
-      trend: "up",
-      trendValue: "1 new",
-    },
-    {
-      title: "Active Tickets",
-      value: upcomingEvents.length, // Assuming each upcoming event is an active ticket
-      icon: <FaTicketAlt className={styles.ticketIcon} />,
-      color: "#a777e3",
-      trend: "steady",
-    },
-    {
-      title: "Total Spent",
-      value: upcomingEvents.reduce((sum, event) => sum + event.payment.paid, 0),
-      icon: <FaMoneyBillWave className={styles.moneyIcon} />,
-      color: "#48bb78",
-      isCurrency: true,
-      trend: "up",
-      trendValue: "15%",
-    },
-    {
-      title: "Past Events",
-      value: 3, // Placeholder for actual count of past events
-      icon: <FaHistory className={styles.historyIcon} />,
-      color: "#ed8936",
-      trend: "up",
-      trendValue: "1 attended",
-    },
-  ];
+  useEffect(() => {
+    const sampleEvents = [
+      {
+        id: 1,
+        name: 'Nairobi Jazz Festival',
+        type: 'Musical Concert',
+        ticketsSold: 3200,
+        totalTickets: 5000,
+        regularPrice: 2500,
+        startDate: '2023-11-15',
+        venue: 'KICC Nairobi',
+        city: 'Nairobi',
+        photo: '/images/jazz-festival.jpg',
+        isFeatured: true
+      },
+      {
+        id: 2,
+        name: 'Comedy Night Extravaganza',
+        type: 'Comedy Event',
+        ticketsSold: 1800,
+        totalTickets: 2500,
+        regularPrice: 1500,
+        startDate: '2023-12-05',
+        venue: 'Carnivore Restaurant',
+        city: 'Nairobi',
+        photo: '/images/comedy-night.jpg'
+      },
+      {
+        id: 3,
+        name: 'Tech Conference 2023',
+        type: 'Conference',
+        ticketsSold: 1200,
+        totalTickets: 2000,
+        regularPrice: 3500,
+        startDate: '2023-11-25',
+        venue: 'Safari Park Hotel',
+        city: 'Nairobi',
+        photo: '/images/tech-conf.jpg',
+        isFeatured: true
+      },
+      {
+        id: 4,
+        name: 'Beach Party Weekend',
+        type: 'Party & Hangout',
+        ticketsSold: 950,
+        totalTickets: 1500,
+        regularPrice: 2000,
+        startDate: '2023-12-10',
+        venue: 'Diani Beach Resort',
+        city: 'Mombasa',
+        photo: '/images/beach-party.jpg'
+      }
+    ];
+    setEvents(sampleEvents);
+    console.log("AdminDashboard - Events Data:", sampleEvents);
+  }, []);
+
+  const filteredEvents = events.filter(event => {
+    const matchesSearch = event.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter = filter === 'all' || event.type === filter;
+    return matchesSearch && matchesFilter;
+  });
+
+  console.log("AdminDashboard - Filtered Events:", filteredEvents);
 
   return (
-    <div className={styles.overview}>
-      <div className={styles.header}>
-        <h2>Dashboard Overview</h2>
-        <div className={styles.notificationBadge}>
-          <FaBell /> <span>3</span> {/* Replace with actual notification count */}
-        </div>
-      </div>
-
-      <div className={styles.statsGrid}>
-        {stats.map((stat, index) => (
-          <div
-            key={index}
-            className={styles.statCard}
-            style={{ borderLeft: `4px solid ${stat.color}` }}
-          >
-            <div className={styles.statIcon} style={{ color: stat.color }}>
-              {stat.icon}
-            </div>
-            <div className={styles.statContent}>
-              <h3>{stat.title}</h3>
-              <p>
-                {stat.isCurrency ? "KSh " : ""}
-                {stat.value.toLocaleString()}
-              </p>
-              {stat.trend && (
-                <span className={`${styles.trend} ${styles[stat.trend]}`}>
-                  {stat.trendValue || ""}
-                </span>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className={styles.upcomingEvents}>
-        <h3>Your Upcoming Events</h3>
-        {upcomingEvents.map((event) => (
-          <div key={event.id} className={styles.eventCard}>
-            <div className={styles.eventInfo}>
-              <h4>{event.name}</h4>
-              <p>
-                <FaCalendarAlt /> {event.date} • {event.venue}
-              </p>
-              <p>
-                <FaTicketAlt /> {event.ticketType} Ticket
-              </p>
-
-              {event.payment.type === "installment" && (
-                <div className={styles.installmentInfo}>
-                  <div className={styles.progressBar}>
-                    <div
-                      className={styles.progressFill}
-                      style={{
-                        width: `${(event.payment.paid / event.payment.amount) * 100}%`,
-                      }}
-                    ></div>
-                  </div>
-                  <div className={styles.paymentDetails}>
-                    <span>
-                      Paid: KSh {event.payment.paid.toLocaleString()}
-                    </span>
-                    <span>Next Payment: {event.payment.nextPayment}</span>
-                  </div>
-                </div>
-              )}
-            </div>
-            <div className={styles.eventActions}>
-              <Link
-                to={`/event/${event.id}/details`}
-                state={{ fromDashboard: true, userTicket: event }}
-                className={styles.viewButton}
-              >
-                View Details
-              </Link>
-              {event.payment.type === "installment" && (
-                <Link
-                  to={`/booking/${event.id}/payment`}
-                  state={{
-                    event: {
-                      id: event.id,
-                      title: event.name,
-                      price: event.payment.amount / event.payment.installments,
-                      date: event.date,
-                    },
-                    paymentOption: "installment",
-                    installmentAmount: event.payment.amount / event.payment.installments,
-                    remainingAmount: event.payment.amount - event.payment.paid,
-                  }}
-                  className={styles.payButton}
-                >
-                  Make Payment
-                </Link>
-              )}
-            </div>
-          </div>
-        ))}
-        {upcomingEvents.length === 0 && <p>No upcoming events found.</p>}
-      </div>
-
-      <div className={styles.quickActions}>
-        <h3>Quick Actions</h3>
-        <div className={styles.actionsGrid}>
-          <Link to="/" className={styles.actionCard}>
-            <FaTicketAlt /> Buy Tickets
-          </Link>
-          <Link to="/user/tickets" className={styles.actionCard}>
-            <FaHistory /> View Tickets
-          </Link>
-          <Link to="/user/payments" className={styles.actionCard}>
-            <FaMoneyBillWave /> Payment History
-          </Link>
+    <div className={styles.container}>
+      <SideNav 
+        isOpen={isSideNavOpen} 
+        toggleNav={() => setIsSideNavOpen(!isSideNavOpen)}
+      />
+      <div className={styles.content}>
+        <TopNav onLogout={() => console.log('Logout')} />
+        <div className={styles.pageContent}>
+          <Outlet context={{ 
+            events: filteredEvents,
+            allEvents: events,
+            filter,
+            setFilter,
+            searchTerm,
+            setSearchTerm 
+          }} />
         </div>
       </div>
     </div>
   );
 };
 
-export default DashboardOverview;
+export default AdminDashboard;

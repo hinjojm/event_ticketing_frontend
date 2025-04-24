@@ -5,12 +5,12 @@ import Calendar from './Calendar';
 import styles from './Calendar.module.css';
 
 const CalendarPage = () => {
-  // April 2025 events data
+  // March 2025 events data
   const [events] = useState([
     {
       id: 1,
       name: 'Nairobi Jazz Festival',
-      startDate: '2025-04-08',
+      startDate: '2025-03-08',
       venue: 'Uhuru Park',
       type: 'Music',
       ticketsSold: 450,
@@ -20,7 +20,7 @@ const CalendarPage = () => {
     {
       id: 2,
       name: 'Tech Conference Africa',
-      startDate: '2025-04-15',
+      startDate: '2025-03-15',
       venue: 'KICC',
       type: 'Conference',
       ticketsSold: 320,
@@ -30,7 +30,7 @@ const CalendarPage = () => {
     {
       id: 3,
       name: 'Food and Wine Expo',
-      startDate: '2025-04-22',
+      startDate: '2025-03-22',
       venue: 'Sarit Centre',
       type: 'Food',
       ticketsSold: 180,
