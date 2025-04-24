@@ -1,4 +1,3 @@
-// src/features/dashboard/DashboardOverview.jsx
 import React from "react";
 import {
   FaTicketAlt,
@@ -189,7 +188,7 @@ const DashboardOverview = () => {
       <div className={styles.quickActions}>
         <h3>Quick Actions</h3>
         <div className={styles.actionsGrid}>
-          <Link to="/events" className={styles.actionCard}>
+          <Link to="/" className={styles.actionCard}>
             <FaTicketAlt /> Buy Tickets
           </Link>
           <Link to="/user/tickets" className={styles.actionCard}>
