@@ -85,8 +85,8 @@ const UserDashboard = () => {
               </div>
             </Link>
             <div className={styles.userInfo}>
-              <h3>Alex Mwangi</h3>
-              <p>alex.mwangi@example.com</p>
+              <h3>Juliet Wanjohi</h3>
+              <p>julz.hinjo@example.com</p>
             </div>
           </div>
           <button
@@ -183,7 +183,7 @@ const UserDashboard = () => {
                   <FaUser />
                 </div>
               </Link>
-              <span>Alex Mwangi</span>
+              <span>Juliet Wanjohi</span>
             </div>
           </div>
         </header>
